@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Google Meet Audio Recorder",
+  "version": "1.0",
+  "description": "Record microphone audio during Google Meet sessions.",
+  "permissions": ["activeTab", "scripting", "downloads"],
+  "host_permissions": ["https://meet.google.com/*"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://meet.google.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "js/ffmpeg-core.js",
+        "js/ffmpeg-core.wasm",
+        "js/ffmpeg-core.worker.js"
+      ],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

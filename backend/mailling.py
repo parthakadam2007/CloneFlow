@@ -3,23 +3,21 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import EmailStr
 from typing import List
 import imaplib
+import smtplib
 import email
+import email.message
+from email.utils import formataddr
+
 import re
 from email.utils import parsedate_to_datetime
 import pprint
 import os
 from starlette.responses import FileResponse 
 
-app = FastAPI()
+
 
 # Enable CORS
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # Adjust for production
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 # Email credentials (Replace with your credentials)
 IMAP_SERVER = "imap.gmail.com"
@@ -69,27 +67,28 @@ def fetch_emails():
 
     except Exception as e:
         return [{"error": str(e)}]
+    
 
 # Function to extract email body
 def send_email(subject: str, body: str, to: EmailStr):
+    SMTP_SERVER = "smtp.gmail.com"
     try:
-        mail = imaplib.IMAP4_SSL(IMAP_SERVER)
-        mail.login(EMAIL_ACCOUNT, APP_PASSWORD)
-        mail.select("inbox")
-
         msg = email.message.EmailMessage()
-        msg["From"] = EMAIL_ACCOUNT
+        msg["From"] = formataddr(("Your Name", EMAIL_ACCOUNT))
         msg["To"] = to
         msg["Subject"] = subject
         msg.set_content(body)
 
-        mail.sendmail(EMAIL_ACCOUNT, to, msg.as_string())
-        mail.close()
-        mail.logout()
+        with smtplib.SMTP_SSL(SMTP_SERVER, 465) as server:
+            server.login(EMAIL_ACCOUNT, APP_PASSWORD)
+            server.send_message(msg)
+
+        print("Email sent successfully")
         return {"status": "Email sent successfully"}
+
     except Exception as e:
+        print(f"Error: {str(e)}")
         return {"error": str(e)}
-    
 
 
 def extract_body(msg):

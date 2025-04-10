@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Recorder</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+      text-align: center;
+      padding-top: 100px;
+      width: 500px;
+      height: 1000px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #start {
+      background-color: #28a745;
+      color: white;
+    }
+
+    #start:hover {
+      background-color: #218838;
+    }
+
+    #stop {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    #stop:hover {
+      background-color: #c82333;
+    }
+
+    button:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h3>Google Meet Audio Recorder</h3>
+  <button id="start">Start Recording</button>
+  <button id="stop" disabled>Stop Recording</button>
+  
+  <script  src="popup.js"></script>
+</body>
+</html>
