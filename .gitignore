@@ -3,7 +3,9 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-production/graceful-path-452515-d9-86ae34b7ffeb.json
+
+# Ignore credentials or service account keys
+production/*.json
 
 # Ignore virtual environments
 venv/
