@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *.pyo
 
+*graceful-path-452515-d9-86ae34b7ffeb.json
+
 # Ignore virtual environments
 venv/
 env/
