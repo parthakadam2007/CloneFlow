@@ -168,3 +168,6 @@ messages = [HumanMessage(content="what is my address?")]
 messages = agent.invoke({"messages": messages})
 for m in messages["messages"]:
     m.pretty_print()
+    
+    
+print("final messages",messages["messages"])    
