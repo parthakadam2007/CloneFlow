@@ -1,18 +1,17 @@
 
 from dotenv import load_dotenv
-
-load_dotenv();  
+load_dotenv()
 from pydantic import BaseModel, Field
 from langchain_google_genai import ChatGoogleGenerativeAI      
 import imaplib
 import email
-
+from langgraph.checkpoint.memory import MemorySaver
 from langchain_chroma import Chroma
 from langchain_google_vertexai import VertexAIEmbeddings
 import os
 
 
-from mailling import fetch_emails,send_email
+from trash.mailling import fetch_emails,send_email
 llm = ChatGoogleGenerativeAI(
     model="gemini-1.5-flash",
     temperature=0,
@@ -25,7 +24,7 @@ llm = ChatGoogleGenerativeAI(
 current_dir = os.path.dirname(os.path.realpath(__file__))
 file_path = os.path.join(current_dir, "youtubeinfo.txt")
 print(file_path)
-persist_directory = os.path.join(current_dir, 'db','chroma_db')
+persist_directory = os.path.join(current_dir, "db","main_db")
 print(persist_directory)
 
 # retrival
@@ -45,7 +44,7 @@ from pydantic import EmailStr
 
 @tool
 def email(subject: str, body: str, to: EmailStr) -> str:
-    """Send an email to the specified address with the given body.
+    """Send an email to the only one specified address with the given body.
     Args:
         to: The email address to send the email to.
         body: The body of the email.
@@ -67,7 +66,7 @@ def fetch_emails_tool()->str:
 
 @tool
 def RAG_tool(query: str) -> str:
-    """Perform retrieval-augmented generation (RAG) on the given query the Database has has personal information about the user.
+    """Perform retrieval-augmented generation (RAG) on the given query the Database has has personal information about the user ,use this tool to look for information about user.
     Args:
         query: The query to perform RAG on.
     Returns: {"documents": documents, "question": query}
@@ -104,7 +103,7 @@ def llm_call(state: MessagesState):
             llm_with_tools.invoke(
                 [
                     SystemMessage(
-                        content="You are a helpful assistant tasked with emailing people."
+                        content="You are a helpful assistant tasked with emailing people. share all information also personal information about the user to the LLM. "
                     )
                 ]
                 + state["messages"]
@@ -157,17 +156,58 @@ agent_builder.add_conditional_edges(
 )
 agent_builder.add_edge("environment", "llm_call")
 
+memory = MemorySaver()
+
 # Compile the agent
-agent = agent_builder.compile()
+agent = agent_builder.compile(checkpointer=memory)
 
 # Show the agent
 
 
 # Invoke
-messages = [HumanMessage(content="what is my address?")]    
-messages = agent.invoke({"messages": messages})
-for m in messages["messages"]:
-    m.pretty_print()
+# messages = [HumanMessage(content="can you send an email to me?")]    
+
+# messages = agent.invoke({"messages": messages})
+# for m in messages["messages"]:
+#     m.pretty_print()
     
+
+# config = {"configurable": {"thread_id": "1"}}
+# input_message = {"role": "user", "content": "hi! I'm bob"}
+# for chunk in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
+#     chunk["messages"][-1].pretty_print()
     
-print("final messages",messages["messages"])    
+# input_message = {"role": "user", "content": "what's my name?"}
+# for chunk in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
+#     chunk["messages"][-1].pretty_print()        
+# # print("final messages",messages["messages"])   
+
+# input_message = {"role": "user", "content": "what's my name?"}
+# for chunk in agent.stream(
+#     {"messages": [input_message]},
+#     {"configurable": {"thread_id": "2"}},
+#     stream_mode="values",
+# ):
+#     chunk["messages"][-1].pretty_print()
+
+
+# Terminal-based interactive loop
+print("Chat started! Type 'exit' to end.\n")
+
+# Set a default thread ID (can be dynamic if needed)
+config = {"configurable": {"thread_id": "1"}}
+
+while True:
+    user_input = input("You: ")
+
+    if user_input.lower() in ["exit", "quit"]:
+        print("Chat ended.")
+        break
+
+    input_message = {"role": "user", "content": user_input}
+    
+    try:
+        for chunk in agent.stream({"messages": [input_message]}, config, stream_mode="values"):
+            chunk["messages"][-1].pretty_print()
+    except Exception as e:
+        print(f"An error occurred: {e}")

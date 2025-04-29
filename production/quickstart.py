@@ -1,7 +1,6 @@
 import datetime
 import os.path
-from  dotenv import load_dotenv
-load_dotenv()
+
 from google.auth.transport.requests import Request
 from google.oauth2.credentials import Credentials
 from google_auth_oauthlib.flow import InstalledAppFlow
@@ -28,7 +27,7 @@ def main():
       creds.refresh(Request())
     else:
       flow = InstalledAppFlow.from_client_secrets_file(
-          "C://Users//DELL//Desktop//CloneFlow//production//graceful-path-452515-d9-86ae34b7ffeb.json", SCOPES
+          "credentials.json", SCOPES
       )
       creds = flow.run_local_server(port=0)
     # Save the credentials for the next run
@@ -39,7 +38,7 @@ def main():
     service = build("calendar", "v3", credentials=creds)
 
     # Call the Calendar API
-    now = datetime.datetime.now(tz=datetime.timezone.utc).isoformat() + "Z"  # 'Z' indicates UTC time
+    now = datetime.datetime.now(tz=datetime.timezone.utc).isoformat()
     print("Getting the upcoming 10 events")
     events_result = (
         service.events()

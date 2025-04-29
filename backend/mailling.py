@@ -1,3 +1,5 @@
+
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import EmailStr
@@ -7,7 +9,7 @@ import smtplib
 import email
 import email.message
 from email.utils import formataddr
-
+import json
 import re
 from email.utils import parsedate_to_datetime
 import pprint
@@ -26,6 +28,7 @@ APP_PASSWORD = "zvpr hvms xqag fpec"
 
 # Function to fetch emails
 def fetch_emails():
+    print('in fetch mail')
     try:
         mail = imaplib.IMAP4_SSL(IMAP_SERVER)
         mail.login(EMAIL_ACCOUNT, APP_PASSWORD)
@@ -52,7 +55,7 @@ def fetch_emails():
                 'email_id': int(email_id.decode()),
                 "from": msg["From"],
                 "subject": msg["Subject"],
-                # "body": extract_body(msg),
+                "body": extract_body(msg),
                 "date": parsed_date.strftime("%Y-%m-%d"),
                 "time": parsed_date.strftime("%H:%M:%S"),
                 "sender_email": sender_email,

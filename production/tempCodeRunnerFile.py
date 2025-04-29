@@ -1,7 +1,6 @@
+message = "Hello, this is a test message from Python!"
 
-from langgraph.graph import MessagesState
-from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage
-from typing_extensions import Literal
-from typing_extensions import TypedDict
-from langgraph.graph import StateGraph, START, END
+# url = f"https://api.telegram.org/bot{TOKEN}/sendMessage?chat_id={CHAT_ID}&text={message}"
 
+# r=requests.get(url)
+# print(r.json())
