@@ -58,11 +58,12 @@ async def generate_reply(request: GenerateReplyRequest):
     
     return {"body": body, "subject": subject}
 
+class ChatRequest(BaseModel):
+    message: str
 @app.post("/chat")
-async def chat(request: str):
-    response = generateresponse(request)
-    print("Received data:", request)
-    print("Received data:", request)
+async def chat(request: ChatRequest):
+    response = generateresponse(request.message)
+    print("Received data:", request.message)
     return {"response": response}   
     
     

@@ -7,6 +7,7 @@ import Compose from './component/Compose.jsx';
 import Calender from './component/Calender.jsx';
 import TodoList from './component/todolist.jsx';
 import Header from './component/Header.jsx';
+import Rag from "./component/Rag.jsx"
 import './App.css';
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
     if (active === 'calender') return <Calender />;
     if (active === 'todolist') return <TodoList />;
     if (active === 'givecontext') return <GiveContext />;
+    if (active=== 'rag') return <Rag />;
+    // Add more components as needed
 
     return <h2>Page not found</h2>;
   };
@@ -37,7 +40,8 @@ function App() {
        <button onClick={()=> setActive('compose')}>Compose</button>
        <button onClick={()=> setActive('calender')}>Calender</button>
        <button onClick={()=> setActive('todolist')}>TodoList</button>
-       <button onClick={()=> setActive('givecontext')}>givecontext</button>
+       <button onClick={()=> setActive('rag')}>Rag</button>
+
      </div>
 
      <div className="content">
