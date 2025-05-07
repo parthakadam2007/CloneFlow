@@ -33,3 +33,15 @@ desktop.ini
 
 # Ignore all text files (e.g., logs or notes)
 *.txt
+
+
+*graceful-path-452515-d9-86ae34b7ffeb.json
+*credentials.json
+*.sqlite3
+*.pdf
+
+db/
+
+
+# Environment variable files
+.env
