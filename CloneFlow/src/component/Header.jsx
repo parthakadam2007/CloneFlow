@@ -3,6 +3,7 @@ const Header = () => {
     return (
         <header className='Header'>
             <h1>Header Component</h1>
+            
         </header>
     );
 };

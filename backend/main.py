@@ -51,12 +51,25 @@ class GenerateReplyRequest(BaseModel):
 async def generate_reply(request: GenerateReplyRequest):
     # Use the validated request data
     print("Received data:", request)
-    
     response = process_query(request.dict())  # assuming this is a function you use for processing
     body = response.get('body', '')
     subject = response.get('subject', '')
-    
     return {"body": body, "subject": subject}
+
+
+# class GenerateComposeRequest(BaseModel):
+#     to:str
+#     subject:str
+#     message:str
+#     promtToMail:str
+# @app.post("/generate_compose")
+# async def generate_compose(request: GenerateComposeRequest):
+#     # Use the validated request data
+#     print("Received data:", request)
+#     response = process_query(request.dict())  # assuming this is a function you use for processing
+#     body = response.get('body', '')
+#     subject = response.get('subject', '')
+#     return {"body": body, "subject": subject}
 
 class ChatRequest(BaseModel):
     message: str
@@ -76,10 +89,24 @@ class EmailRequest(BaseModel):
 @app.post('/send_mail')
 def sends_mail(request: EmailRequest):
     try:
+        
         send_email(request.subject, request.body, request.to)
         return JSONResponse(content={"success": "✅ Email sent successfully!"})
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+class ComposeRequest(BaseModel):
+    to: EmailStr
+    subject: str
+    message: str
+@app.post('/compose')
+def sends_mail(request: ComposeRequest):
+    try:
+        
+        send_email(request.subject, request.message, request.to)
+        return JSONResponse(content={"success": "✅ Email sent successfully!"})
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))    
     
     
 html = """

@@ -5,7 +5,12 @@ import './Rag.css'; // Import the CSS file
 import './Card.css'
 
 
-
+const element = (
+  <>
+    <div>dnddsd</div>
+    <div>ndnf</div>
+  </>
+);
 
 
 
@@ -205,9 +210,8 @@ function Rag() {
       </ul>
     </div>
   )
-  ///////////////////////////////////////////////////////  // 
-const ragMainPage=(
-  
+  const ragContainer=(
+    
 <div className="rag-container">
   <div className="userinfo-card item">
   <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="grey" className="bi bi-person-lines-fill" viewBox="0 0 16 16">
@@ -238,17 +242,23 @@ const ragMainPage=(
 </svg>
     <div className="item-heading">Contact</div>
   </div>
-  
-
 </div>
 
+  )
+  ///////////////////////////////////////////////////////  // 
 
-)
   return (
     <div className="Rag">
 
+
+
+<div className="rag-main-container">
+{/* {ragContainer} */}
+hello
+</div>
+
       
-{ragMainPage}
+
     </div>
   );
 }

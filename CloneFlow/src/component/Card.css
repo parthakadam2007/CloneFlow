@@ -1,0 +1,36 @@
+.item {
+    width: 200px;
+    padding: 16px;
+    border-radius: 16px;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  
+  .item img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 12px;
+  }
+  
+  .item-heading {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  .rag-container {
+
+    display: flex;
+  }
+
+  .rag-container>div {
+    margin: 10px;
+  }
+  
