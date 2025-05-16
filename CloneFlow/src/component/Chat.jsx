@@ -1,15 +1,15 @@
 import { useState, useEffect, useRef } from "react";
 import "./Chat.css"
-
+import sendbutton from "../assets/send_button.svg"
 function Chat() {
   const [chat, setChat] = useState([]);       // All messages
   const [input, setInput] = useState("");     // Input text
   const chatContainerRef = useRef(null);      // Ref for scrolling
 
   const fetchChat = async () => {
-    const response = await fetch("http://127.0.0.1:8000/");
-    const data = await response.json();
-    setChat(data);
+    // const response = await fetch("http://127.0.0.1:8000/");
+    // const data = await response.json();
+    // setChat(data);
     console.log("chat",chat)
   };
 
@@ -66,17 +66,19 @@ function Chat() {
         ))}
       </div>
 
-      <div className="chatBox">
+      <div className="chatBox ">
         <input
+          autoFocus
+          className="inputChat"
           type="text"
-          placeholder="Type your message..."
+          placeholder="Ask anything..."
           value={input}
           onChange={(e) => setInput(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && sendMessage()}
         />
         <div className="sendContainer">
           <div className="send-btn" onClick={sendMessage}>
-            ➤
+           <img src={sendbutton} style={{ width: "35px", paddingTop:"10px"}} alt="" />
           </div>
         </div>
       </div>

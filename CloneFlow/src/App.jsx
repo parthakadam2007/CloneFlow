@@ -8,8 +8,15 @@ import Calender from './component/Calender.jsx';
 import TodoList from './component/todolist.jsx';
 import Header from './component/Header.jsx';
 import Rag from "./component/Rag.jsx"
+import Test from "./component/test1.jsx"
 import './App.css';
 
+import chatIcon from './assets/chat.svg';
+import inboxIcon from './assets/inbox.svg';
+import composeIcon from './assets/pen.svg';
+import calendarIcon from './assets/calendar.svg';
+import todoIcon from './assets/list.svg';
+import ragIcon from './assets/rag.svg';
 function App() {
   const [active, setActive] = useState('chat');
 
@@ -22,6 +29,7 @@ function App() {
     if (active === 'todolist') return <TodoList />;
     if (active === 'givecontext') return <GiveContext />;
     if (active=== 'rag') return <Rag />;
+    if (active === 'test') return <Test />;
     // Add more components as needed
 
     return <h2>Page not found</h2>;
@@ -33,16 +41,38 @@ function App() {
     
   <div className="container">
      
-     <div className="sidebar">
-       <button onClick={() => setActive('chat')}>Chat</button>
-       <button onClick={() => setActive('inbox')}>Inbox</button>
-       <button onClick={() => setActive('profile')}>Profile</button>
-       <button onClick={()=> setActive('compose')}>Compose</button>
-       <button onClick={()=> setActive('calender')}>Calender</button>
-       <button onClick={()=> setActive('todolist')}>TodoList</button>
-       <button onClick={()=> setActive('rag')}>Rag</button>
+  <div className="sidebar">
+    <div className="composeContainer">
+  <button onClick={() => setActive('compose')}>
+    <img src={composeIcon} alt="Compose Icon" className="sidebar-icon" />
+    Compose
+  </button>
+    </div>
 
-     </div>
+ 
+  <button onClick={() => setActive('chat')}>
+    <img src={chatIcon} alt="Chat Icon" className="sidebar-icon" />
+    Chat
+  </button>
+  <button onClick={() => setActive('inbox')}>
+    <img src={inboxIcon} alt="Inbox Icon" className="sidebar-icon" />
+    Inbox
+  </button>
+
+  <button onClick={() => setActive('calender')}>
+    <img src={calendarIcon} alt="Calendar Icon" className="sidebar-icon" />
+    Calendar
+  </button>
+  <button onClick={() => setActive('todolist')}>
+    <img src={todoIcon} alt="Todo Icon" className="sidebar-icon" />
+    TodoList
+  </button>
+   <button onClick={() => setActive('rag')}>
+    <img src={ragIcon} alt="Rag Icon" className="sidebar-icon" />
+    Rag
+  </button>
+
+</div>
 
      <div className="content">
        {renderComponent()}

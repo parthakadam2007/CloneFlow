@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect} from 'react';
 import './Compose.css'
+import magicIcon from '../assets/magicStick.svg'
 const Compose = () => {
   const [to, setTo] = useState('');
   const [subject, setSubject] = useState('');
@@ -9,7 +10,45 @@ const Compose = () => {
   const[generatedSubject,setGenratedSubject]=useState('');
   const[generatedMessage,setGeneratedMessage]=useState('');
   const[promtToMail,setGeneratedPromtToMail]= useState('');
-  
+
+    
+  useEffect(() => {
+    console.log('Updated To:', to);
+    console.log('Updated Subject:', subject);
+  }, [to, subject]);
+
+  const handleSend = async (e) => {
+    e.preventDefault();
+    const body = message
+    const emailData = {
+      to,
+      subject,
+      body,
+    };
+
+    try {   
+      const response = await fetch('http://127.0.0.1:8000/send_mail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData),
+      });
+      if (response.ok) {
+        console.log('Email sent successfully!');
+      
+        }
+    }
+ catch (error) {
+
+      console.error('Error sending email:', error);
+    }
+
+   
+ }
+
+
+
 
 
 
@@ -75,9 +114,14 @@ const handleGenerate=async (e)=>{
     )
     const data = await response.json();
     console.log("handleGenerate",data)
-    setGeneratedMessage(data.body);
-    setGenratedSubject(data.subject)
-    console.log('generatedData',generatedData)
+    // setTo(data.to || '');
+    setSubject(data.subject || '');
+    setMessage(data.body || '');
+    
+
+    console.log('To',to)
+    console.log('subject',subject)
+    console.log('message',message)
   }
   catch(err){
 console.log("error generating",err)
@@ -88,7 +132,6 @@ console.log("error generating",err)
   return (
     <div className="Compose">
       <div className="compose-container">
-        <h2>Compose Email</h2>
         <form onSubmit={handleSubmit}>
           <label htmlFor="to">To:</label>
           <input
@@ -123,9 +166,9 @@ console.log("error generating",err)
            placeholder='generate' 
            className='generate-input'
            onChange={(e)=>setGeneratedPromtToMail(e.target.value)} />
-           <button className='generate-btn' onClick={handleGenerate}>generate</button>
+           <button className='generate-btn' onClick={handleGenerate}><img src={magicIcon} alt="" /></button>
           </div>
-          <button type="submit">Send</button>
+          <button className='composeSend' type="submit" onClick={handleSend}>Send</button>
         </form>
       </div>
     </div>

@@ -1,0 +1,1 @@
+ output_file.write(sentence + "\n")

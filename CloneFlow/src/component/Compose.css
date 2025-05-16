@@ -29,8 +29,7 @@
     min-height: 150px;
   }
   button {
-    margin-top: 20px;
-    padding: 10px 20px;
+    /* margin-top: 20px; */
     background: #007bff;
     color: white;
     border: none;
@@ -48,4 +47,24 @@
   }
   .generate-input{
     margin-right: 20px;
+  }
+
+  .composeSend{
+    width: 93px;
+    margin-top: 30px;
+    margin-left: 445px;
+    border-radius: 20px;
+    height: 40px;
+  }
+
+  .generate-btn{
+    border-radius: 100%;
+    width: 40px;
+    height: 40px;
+     margin-top: 30px;
+  }
+  .generate-btn>img{
+    width: 40px;
+    height: 40px;
+padding: 5px;
   }
