@@ -1,47 +1,34 @@
-# Ignore Python cache and compiled files
+# Python cache/compiled files
 __pycache__/
 *.py[cod]
 *.pyo
 
-
-# Ignore credentials or service account keys
+# Credentials and sensitive files
 production/*.json
+*graceful-path-*.json
+*credentials.json
+*.env
+*.env.local
+.environments
 
 # Ignore virtual environments
 venv/
 env/
-*.env
 *.venv
 
-# Ignore Node.js files (if applicable)
+# Node.js (if applicable)
 node_modules/
 
-# Ignore system files
+# DB, logs, PDFs, temp files
+*.log
+*.tmp
+*.sqlite3
+*.pdf
+*.txt
+db/
+
+# IDE and system files
+.vscode/
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Ignore logs and temp files
-*.log
-*.tmp
-
-# Ignore VSCode settings (optional)
-.vscode/
-
-
-
-
-# Ignore all text files (e.g., logs or notes)
-*.txt
-
-
-*graceful-path-452515-d9-86ae34b7ffeb.json
-*credentials.json
-*.sqlite3
-*.pdf
-
-db/
-
-
-# Environment variable files
-.env
