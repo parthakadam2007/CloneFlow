@@ -49,10 +49,12 @@ async def generatate_reply():
     return data 
 
 class GenerateReplyRequest(BaseModel):
+    humanRequest: str
     emailBody: str
     sender_email: str
     emailTime: int
     user_input: str # or whatever fields you're sending
+    
 @app.post("/generate_reply")
 async def generate_reply(request: GenerateReplyRequest):
     # Use the validated request data

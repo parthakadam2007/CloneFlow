@@ -31,7 +31,7 @@ def process_query(query):
     )
     
     setupTempaltePromt = PromptTemplate.from_template(
-        "You are an AI that replies professionally. The email belongs to 'parthakadam2007@gmail' and the name is Partha Kadam. Reply professionally and provide all requested details, email:{email}, context:{context}"
+        "You are an AI that replies professionally ,dont write subject of mail directlly start with body of mail and write as you are partha. The email belongs to 'parthakadam2007@gmail' and the name is Partha Kadam. Reply professionally and provide all requested details, email:{email}, context:{context}"
     )
     
     chain_retrival = standaloneQuestionTempaltePromt | llm | StrOutputParser()

@@ -1,17 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import './Inbox.css';
+import { decodeMimeWords,formatEmailBody } from '../utils/mimeDecoder';
+import magicIcon from '../assets/magicStick.svg'
+import deleteIcon from '../assets/delete.png'
+import replyIcon from '../assets/reply.svg';
 
 function stripHtml(html) {
   const tempDiv = document.createElement('div');
   tempDiv.innerHTML = html;
   return tempDiv.textContent || tempDiv.innerText || '';
 }
-
+function removeAngleBracketsContent(str) {
+  return str.replace(/<[^>]*>/g, '');
+}
 const Inbox = () => {
   const [emails, setEmails] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [replyVisible, setReplyVisible] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
+  const[promtToMail,setGeneratedPromtToMail]= useState('');
 
   useEffect(() => {
     fetchEmails();
@@ -58,16 +65,18 @@ const Inbox = () => {
     }
   };
 
-  const generateReply = async () => {
+  const generateReply = async (e) => {
+    e.preventDefault();
     const emailBody = document.querySelector('.email-content-body').innerText;
     const senderEmail = document.querySelector('.reply-header').value;
     const userInput = document.querySelector('.reply-textarea').value;
+    const generateInput = document.querySelector('.generate-input').value;
 
     try {
       const response = await fetch("http://127.0.0.1:8000/generate_reply", {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ emailBody, sender_email: senderEmail, emailTime: 11, user_input: userInput }),
+        body: JSON.stringify({ humanRequest: generateInput,emailBody, sender_email: senderEmail, emailTime: 11, user_input: userInput  }),
       });
 
       const data = await response.json();
@@ -95,12 +104,20 @@ const Inbox = () => {
               onClick={() => showEmailDetail(email)}
             >
               <div className="email-item-header">
-                <span className="email-from">{email.from}</span>
+                <span className="email-from">{removeAngleBracketsContent(email.from)}</span>
+
                 <span className="email-date">{email.date}</span>
               </div>
-              <div className="email-subject">{email.subject}</div>
+              <div className="email-subject">{ decodeMimeWords(email.subject)}</div>
               <div className="email-preview">{stripHtml(email.body)}</div>
+              {console.log("email.from",email.from)}
+              {console.log("email.body",email.body)}
+              {console.log("email.subject",email.subject)}
+              {console.log("email.date",email.date)}
+              {console.log("email.id",email.id)}
+
             </div>
+            
           ))}
         </div>
       </div>
@@ -118,28 +135,44 @@ const Inbox = () => {
         ) : (
           <div className="email-content">
             <div className="email-content-header">
-              <h1 className="email-content-subject">{selectedEmail.subject}</h1>
+              <h1 className="email-content-subject">{ decodeMimeWords(selectedEmail.subject)}</h1>
               <div className="email-content-meta">
                 <span>{selectedEmail.from}</span>
                 <span>{selectedEmail.date}</span>
               </div>
             </div>
-            <div className="email-content-body" dangerouslySetInnerHTML={{ __html: selectedEmail.body.replace(/\n/g, '<br>') }} />
+
+            <div className="email-content-body" dangerouslySetInnerHTML={{ __html: formatEmailBody(selectedEmail.body) }}  />
 
             <button className="reply-button" onClick={() => setReplyVisible(!replyVisible)}>
               Reply
             </button>
 
             {replyVisible && (
-              <div className="reply-window">
+              <div className="reply-window compose-container">
                 <form onSubmit={handleSendReply}>
-                  <input className="reply-header" type="email" defaultValue={selectedEmail.sender_email} placeholder="Enter email" required />
-                  <input className="sub-add" type="text" placeholder="Enter subject" required />
-                  <textarea className="reply-textarea" placeholder="Write your reply here..." required></textarea>
+                  <div className="border-bottom replyFlex buttomImg">
+                    <img src={replyIcon} alt="" />
+                  <input className="reply-header aoT border-bottom" type="email" defaultValue={selectedEmail.sender_email} placeholder="   Enter email" required />
+
+                  </div>
+                  <input className="sub-add aoT border-bottom" type="text" placeholder="Enter subject" required />
+
+                    <div className="border-bottom">
+                  </div>
+                  <textarea className="reply-textarea aoT" placeholder="   Write your reply here..." required></textarea>
+                      <div className="generate-container generate-container-in-reply">
+                            <input
+                             type="text" 
+                             placeholder='generate' 
+                             className='generate-input aoT'
+                             onChange={(e)=>setGeneratedPromtToMail(e.target.value)} />
+                             <button className='generate-btn' onClick={generateReply}><img src={magicIcon} alt="" /></button>
+                            </div>
                   <div className="reply-actions">
-                    <button type="button" className="reply-cancel" onClick={() => setReplyVisible(false)}>Cancel</button>
-                    <button type="button" className="generate-reply" onClick={generateReply}>Generate Reply</button>
-                    <button type="submit" className="reply-send">Send Reply</button>
+                       <button type="submit" className="reply-send ">Send</button>
+                    <button type="button" className="reply-cancel" onClick={() => setReplyVisible(false)}><img src={deleteIcon} alt=""  className='deleteIcon'/></button>
+                 
                   </div>
                 </form>
                 {responseMessage && (
