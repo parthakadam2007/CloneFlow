@@ -69,7 +69,7 @@ function Chat() {
       <div className="chatBox ">
         <input
           autoFocus
-          className="inputChat"
+          className="inputChat aoT"
           type="text"
           placeholder="Ask anything..."
           value={input}

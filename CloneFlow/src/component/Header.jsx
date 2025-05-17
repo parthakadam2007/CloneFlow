@@ -29,7 +29,7 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="Search projects, templates, or users..."
-                            className="search-input"
+                            className="search-input aoT"
                         />
                     </div>
                 </div>

@@ -1,11 +1,26 @@
+.newMesseage{
+ border: 1px solid #f2f6fc;
+    border-radius: 5px;
+    resize: vertical;
+    padding: 5px;
+    padding-left: 20px;
+height: 30px;
+  background-color: #f2f6fc;
+}
 
   .compose-container {
+    margin-left: 500px;
+    margin-top: 150px;
     background: #fff;
-    padding: 20px 30px;
+    padding: 0px 0px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     width: 100%;
     max-width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  }
+  .compose-form{
+    padding: 10px;
   }
   .compose-container h2 {
     margin-bottom: 20px;
@@ -39,32 +54,172 @@
   button:hover {
     background: #0056b3;
   }
-  .generate-container{
-    display: flex;
-    align-items: end;
-    align-items: flex-end;
 
-  }
-  .generate-input{
-    margin-right: 20px;
-  }
 
   .composeSend{
     width: 93px;
-    margin-top: 30px;
-    margin-left: 445px;
+    margin-top: 20px;
+    /* margin-left: 445px; */
     border-radius: 20px;
     height: 40px;
   }
 
   .generate-btn{
+
+
     border-radius: 100%;
     width: 40px;
     height: 40px;
      margin-top: 30px;
+     margin-bottom: 30px;
   }
+
   .generate-btn>img{
     width: 40px;
     height: 40px;
 padding: 5px;
   }
+  /*  */
+
+  .aoT {
+    font-size: inherit;
+    padding: 0;
+}
+.aoT {
+    border: 0 !important;
+}
+.aoT {
+    box-sizing: border-box;
+    color: #222;
+    background-color: white;
+    font-size: 0.875rem;
+    line-height: 20px;
+    margin: 0;
+    -moz-box-sizing: border-box;
+    outline: none;
+    padding: 4px 1px 4px 2px;
+    resize: none;
+    -webkit-box-sizing: border-box;
+    width: 100%;
+}
+body, input, textarea, select {
+    font-family: "Google Sans", Roboto, RobotoDraft, Helvetica, Arial, sans-serif;
+}
+input:not([type="image" i], [type="range" i], [type="checkbox" i], [type="radio" i]) {
+    overflow-clip-margin: 0px !important;
+    overflow: clip !important;
+}
+input:not([type="file" i], [type="image" i], [type="checkbox" i], [type="radio" i]) {
+}
+input {
+    font-style: ;
+    font-variant-ligatures: ;
+    font-variant-caps: ;
+    font-variant-numeric: ;
+    font-variant-east-asian: ;
+    font-variant-alternates: ;
+    font-variant-position: ;
+    font-variant-emoji: ;
+    font-weight: ;
+    font-stretch: ;
+    font-size: ;
+    font-family: ;
+    font-optical-sizing: ;
+    font-size-adjust: ;
+    font-kerning: ;
+    font-feature-settings: ;
+    font-variation-settings: ;
+    text-rendering: auto;
+    color: fieldtext;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    appearance: auto;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: field;
+    margin: 0em;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    padding-block: 1px;
+    padding-inline: 2px;
+}
+.I5 .fX, .I5 .hl, .I5 .az6 {
+    padding-bottom: 8px;
+    padding-top: 8px;
+    border: none;
+    box-shadow: inset 0 -1px 0 0 rgba(100, 121, 143, .12);
+    line-height: 20px;
+    min-height: auto;
+    padding-left: 0;
+    padding-right: 0;
+}
+.aoP {
+    border-spacing: 0 0;
+    table-layout: fixed;
+    width: 100%;
+}
+table {
+    border-collapse: separate;
+    text-indent: initial;
+    border-spacing: 2px;
+}
+.aoI {
+    background-color: transparent;
+    color: #222;
+    font-size: .875rem;
+    overflow-y: visible;
+    
+}
+.Hd {
+    visibility: visible;
+}
+.dw {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex
+;
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.border-bottom{
+   border: 1px solid #eceff1;
+   border-top: 0;
+   border-left: 0;
+    border-right: 0;
+
+}
+  .generate-container{
+    display: flex;
+    align-items: center;
+    
+    height: 50px;
+    padding:10px;
+
+    border-radius: 200PX;
+
+     background-color: #f4f5fc;
+     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+
+
+  }
+
+.generate-input{
+  padding: 0;
+
+  background-color: #f4f5fc;
+
+}

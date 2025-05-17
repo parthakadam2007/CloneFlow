@@ -131,11 +131,15 @@ console.log("error generating",err)
 }
   return (
     <div className="Compose">
-      <div className="compose-container">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="to">To:</label>
-          <input
+     
+      <div className="compose-container ">
+         <div className="newMesseage">New Message</div>
+        <form className='compose-form' onSubmit={handleSubmit}>
+        <div className='border-bottom'>
+            <input
+            className='aoT border-bottom'
             type="email"
+            placeholder='To:'
             id="to"
             name="to"
             value={to}
@@ -143,28 +147,36 @@ console.log("error generating",err)
             required
           />
 
-          <label htmlFor="subject">Subject:</label>
-          <input
+        </div>
+
+
+<div className='border-bottom'>
+  <input
+          className='aoT'
+            placeholder='Subject:'
             type="text"
             id="subject"
             name="subject"
             value={subject}
             onChange={(e) => setSubject(e.target.value)}
           />
+</div>
+        
 
-          <label htmlFor="message">Message:</label>
           <textarea
+          className='aoT'
             id="message"
             name="message"
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             required
           ></textarea>
+          
           <div className="generate-container">
           <input
            type="text" 
            placeholder='generate' 
-           className='generate-input'
+           className='generate-input aoT'
            onChange={(e)=>setGeneratedPromtToMail(e.target.value)} />
            <button className='generate-btn' onClick={handleGenerate}><img src={magicIcon} alt="" /></button>
           </div>
