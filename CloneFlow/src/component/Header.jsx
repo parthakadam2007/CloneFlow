@@ -1,6 +1,6 @@
 import './Header.css';
 import menuIcon from '../assets/menu-icon.svg';
-import logo from '../assets/logo.svg';
+import logo from '../assets/CloneFlow.svg';
 import searchIcon from '../assets/search-icon.svg';
 import parthalogo from '../assets/parthalogo.svg';
 
@@ -29,7 +29,7 @@ const Header = () => {
                         <input
                             type="text"
                             placeholder="Search projects, templates, or users..."
-                            className="search-input aoT"
+                            className="search-input aoT rubikLight "
                         />
                     </div>
                 </div>

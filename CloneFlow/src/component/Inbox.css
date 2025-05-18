@@ -17,9 +17,9 @@
 
 .section-title {
     padding: 1rem;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--gray-800);
+    font-size: 1.5rem;
+   
+    color:#0071EE;
     border-bottom: 1px solid var(--gray-200);
 }
 
@@ -54,8 +54,7 @@
 }
 
 .email-from {
-    font-size: 0.875rem;
-    color: var(--gray-900);
+    color: #1e293b;
 }
 
 .email-date {
@@ -110,7 +109,7 @@
 .email-content-subject {
     font-size: 1.5rem;
     font-weight: bold;
-    color: var(--gray-900);
+    color: #1e293b;
     margin-bottom: 0.5rem;
 }
 
@@ -284,3 +283,43 @@
     cursor: pointer;
 }
 
+
+.rubikRegular {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.rubikHeavy {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+.rubikSemiBold {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+}
+.rubikLight {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+.rubikSmallwhite {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  color: rgb(253, 253, 253);
+}
+.rubikSemiwhite {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: normal;
+   color: rgb(253, 253, 253);
+}

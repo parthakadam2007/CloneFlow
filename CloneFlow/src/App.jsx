@@ -10,6 +10,7 @@ import Header from './component/Header.jsx';
 import Rag from "./component/Rag.jsx"
 import Test from "./component/test1.jsx"
 import './App.css';
+import './component/fontCss.css';
 
 import chatIcon from './assets/chat.svg';
 import inboxIcon from './assets/inbox.svg';
@@ -42,32 +43,32 @@ function App() {
   <div className="container">
      
   <div className="sidebar">
-    <div className="composeContainer">
-  <button onClick={() => setActive('compose')}>
+    <div className="composeContainer ">
+  <button className='rubikSemiBold' onClick={() => setActive('compose')}>
     <img src={composeIcon} alt="Compose Icon" className="sidebar-icon" />
-    Compose
+    <div className='rubikSemiBold'>Compose</div>
   </button>
     </div>
 
  
-  <button onClick={() => setActive('chat')}>
+  <button className='rubikRegular' onClick={() => setActive('chat')}>
     <img src={chatIcon} alt="Chat Icon" className="sidebar-icon" />
     Chat
   </button>
-  <button onClick={() => setActive('inbox')}>
+  <button className='rubikRegular' onClick={() => setActive('inbox')}>
     <img src={inboxIcon} alt="Inbox Icon" className="sidebar-icon" />
     Inbox
   </button>
 
-  <button onClick={() => setActive('calender')}>
+  <button className='rubikRegular' onClick={() => setActive('calender')}>
     <img src={calendarIcon} alt="Calendar Icon" className="sidebar-icon" />
     Calendar
   </button>
-  <button onClick={() => setActive('todolist')}>
+  <button className='rubikRegular' onClick={() => setActive('todolist')}>
     <img src={todoIcon} alt="Todo Icon" className="sidebar-icon" />
     TodoList
   </button>
-   <button onClick={() => setActive('rag')}>
+   <button className='rubikRegular' onClick={() => setActive('rag')}>
     <img src={ragIcon} alt="Rag Icon" className="sidebar-icon" />
     Rag
   </button>

@@ -95,7 +95,7 @@ const Inbox = () => {
     <main className="main-content">
       {/* Email List */}
       <div className="email-list">
-        <h2 className="section-title">Inbox</h2>
+        <h2 className="section-title rubikHeavy">Inbox</h2>
         <div className="email-items">
           {emails.map(email => (
             <div
@@ -104,12 +104,12 @@ const Inbox = () => {
               onClick={() => showEmailDetail(email)}
             >
               <div className="email-item-header">
-                <span className="email-from">{removeAngleBracketsContent(email.from)}</span>
+                <span className="email-from rubikRegular">{removeAngleBracketsContent(email.from)}</span>
 
                 <span className="email-date">{email.date}</span>
               </div>
-              <div className="email-subject">{ decodeMimeWords(email.subject)}</div>
-              <div className="email-preview">{stripHtml(email.body)}</div>
+              <div className="email-subject ">{ decodeMimeWords(email.subject)}</div>
+              <div className="email-preview rubikLight">{stripHtml(email.body)}</div>
               {console.log("email.from",email.from)}
               {console.log("email.body",email.body)}
               {console.log("email.subject",email.subject)}
@@ -126,25 +126,25 @@ const Inbox = () => {
       <div className="email-detail">
         {!selectedEmail ? (
           <div className="empty-state">
-            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#0071ee" strokeWidth="2">
               <path d="M22 12h-6l-2 3h-4l-2-3H2"></path>
               <path d="M5.45 5.11L2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"></path>
             </svg>
-            <p>Select an email to read</p>
+            <p className='rubikLight'>Select an email to read</p>
           </div>
         ) : (
           <div className="email-content">
             <div className="email-content-header">
-              <h1 className="email-content-subject">{ decodeMimeWords(selectedEmail.subject)}</h1>
-              <div className="email-content-meta">
+              <h1 className="email-content-subject rubikHeavy">{ decodeMimeWords(selectedEmail.subject)}</h1>
+              <div className="email-content-meta rubikLight ">
                 <span>{selectedEmail.from}</span>
                 <span>{selectedEmail.date}</span>
               </div>
             </div>
 
-            <div className="email-content-body" dangerouslySetInnerHTML={{ __html: formatEmailBody(selectedEmail.body) }}  />
+            <div className="email-content-body rubikHeavy" dangerouslySetInnerHTML={{ __html: formatEmailBody(selectedEmail.body) }}  />
 
-            <button className="reply-button" onClick={() => setReplyVisible(!replyVisible)}>
+            <button className="reply-button rubikSemiwhite" onClick={() => setReplyVisible(!replyVisible)}>
               Reply
             </button>
 
@@ -170,7 +170,7 @@ const Inbox = () => {
                              <button className='generate-btn' onClick={generateReply}><img src={magicIcon} alt="" /></button>
                             </div>
                   <div className="reply-actions">
-                       <button type="submit" className="reply-send ">Send</button>
+                       <button type="submit" className="reply-send rubikSemiwhite">Send</button>
                     <button type="button" className="reply-cancel" onClick={() => setReplyVisible(false)}><img src={deleteIcon} alt=""  className='deleteIcon'/></button>
                  
                   </div>
