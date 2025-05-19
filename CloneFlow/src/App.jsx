@@ -9,6 +9,11 @@ import TodoList from './component/todolist.jsx';
 import Header from './component/Header.jsx';
 import Rag from "./component/Rag.jsx"
 import Test from "./component/test1.jsx"
+
+import BackgroundEmailFetcher from './component/BackgroundEmailFetcher'; // import it
+
+
+
 import './App.css';
 import './component/fontCss.css';
 
@@ -21,12 +26,14 @@ import ragIcon from './assets/rag.svg';
 function App() {
   const [active, setActive] = useState('chat');
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [emails, setEmails] = useState([]); 
+
    const toggleSidebar = () => {
     setSidebarOpen(!sidebarOpen);
   };
   const renderComponent = () => {
     if (active === 'chat') return <Chat />;
-    if (active === 'inbox') return <Inbox />;
+    if (active === 'inbox') return <Inbox emails={emails} />;
     if (active === 'profile') return <Profile />;
     if (active === 'compose') return <Compose />;
     if (active === 'calender') return <Calender />;
@@ -41,6 +48,7 @@ function App() {
 
   return (
     <div className="superContainer">
+       <BackgroundEmailFetcher onFetch={setEmails} /> {/* run in background */}
       <Header  toggleSidebar={toggleSidebar}/>
     
   <div className="container">

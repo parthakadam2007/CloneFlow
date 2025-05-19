@@ -13,27 +13,27 @@ function stripHtml(html) {
 function removeAngleBracketsContent(str) {
   return str.replace(/<[^>]*>/g, '');
 }
-const Inbox = () => {
-  const [emails, setEmails] = useState([]);
+const Inbox = ({emails}) => {
+  // const [emails, setEmails] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [replyVisible, setReplyVisible] = useState(false);
   const [responseMessage, setResponseMessage] = useState("");
   const[promtToMail,setGeneratedPromtToMail]= useState('');
 
-  useEffect(() => {
-    fetchEmails();
-  }, []);
+  // useEffect(() => {
+  //   fetchEmails();
+  // }, []);
 
-  const fetchEmails = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/emails");
-      let data = await response.json();
-      data = data.sort((a, b) => b.id - a.id);
-      setEmails(data);
-    } catch (error) {
-      console.error('Error fetching emails:', error);
-    }
-  };
+  // const fetchEmails = async () => {
+  //   try {
+  //     const response = await fetch("http://127.0.0.1:8000/emails");
+  //     let data = await response.json();
+  //     data = data.sort((a, b) => b.id - a.id);
+  //     setEmails(data);
+  //   } catch (error) {
+  //     console.error('Error fetching emails:', error);
+  //   }
+  // };
 
   const showEmailDetail = (email) => {
     setSelectedEmail({ ...email, read: true });
