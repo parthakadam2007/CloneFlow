@@ -4,13 +4,13 @@ import logo from '../assets/CloneFlow.svg';
 import searchIcon from '../assets/search-icon.svg';
 import parthalogo from '../assets/parthalogo.svg';
 
-const Header = () => {
+const Header = ({ toggleSidebar }) => {
     return (
         <header className="header">
             <div className="header-container">
                 {/* Left: Menu Icon + Logo */}
                 <div className="header-left">
-                    <button className="menu-button">
+                    <button className="menu-button" onClick={toggleSidebar}>
                         <img src={menuIcon} className="menu-icon" alt="Menu Icon" />
                     </button>
 

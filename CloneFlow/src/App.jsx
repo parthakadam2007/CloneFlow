@@ -20,7 +20,10 @@ import todoIcon from './assets/list.svg';
 import ragIcon from './assets/rag.svg';
 function App() {
   const [active, setActive] = useState('chat');
-
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+   const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
   const renderComponent = () => {
     if (active === 'chat') return <Chat />;
     if (active === 'inbox') return <Inbox />;
@@ -38,11 +41,11 @@ function App() {
 
   return (
     <div className="superContainer">
-      <Header />
+      <Header  toggleSidebar={toggleSidebar}/>
     
   <div className="container">
-     
-  <div className="sidebar">
+
+  <div className={`${sidebarOpen ? 'sidebar' : 'sidebar-close'}`}>
     <div className="composeContainer ">
   <button className='rubikSemiBold' onClick={() => setActive('compose')}>
     <img src={composeIcon} alt="Compose Icon" className="sidebar-icon" />
@@ -70,7 +73,7 @@ function App() {
   </button>
    <button className='rubikRegular' onClick={() => setActive('rag')}>
     <img src={ragIcon} alt="Rag Icon" className="sidebar-icon" />
-    Rag
+    Memory
   </button>
 
 </div>
