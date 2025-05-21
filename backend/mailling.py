@@ -15,6 +15,8 @@ from email.utils import parsedate_to_datetime
 import pprint
 import os
 from starlette.responses import FileResponse 
+from dotenv import load_dotenv
+load_dotenv()
 
 
 
@@ -23,9 +25,10 @@ from starlette.responses import FileResponse
 
 # Email credentials (Replace with your credentials)
 IMAP_SERVER = "imap.gmail.com"
-EMAIL_ACCOUNT = "parthakadam2007@gmail.com"
-APP_PASSWORD = "zvpr hvms xqag fpec"
-
+EMAIL_ACCOUNT = os.getenv("EMAIL_ID")
+APP_PASSWORD = os.getenv("EMAIL_APPLICATION_PASSWORD")
+print(EMAIL_ACCOUNT)
+print(APP_PASSWORD)
 # Function to fetch emails
 def fetch_emails():
     print('in fetch mail')
@@ -77,7 +80,7 @@ def send_email(subject: str, body: str, to: EmailStr):
     SMTP_SERVER = "smtp.gmail.com"
     try:
         msg = email.message.EmailMessage()
-        msg["From"] = formataddr(("Your Name", EMAIL_ACCOUNT))
+        msg["From"] = formataddr(("Partha Kadam", EMAIL_ACCOUNT))
         msg["To"] = to
         msg["Subject"] = subject
         msg.set_content(body)
