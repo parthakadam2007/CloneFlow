@@ -52,7 +52,7 @@ height: 30px;
     cursor: pointer;
   }
   button:hover {
-    background: #0056b3;
+    background: #0057b3d5;
   }
 
 
@@ -218,4 +218,11 @@ width: 1000px;
   margin: 10px;
   margin-left: 30px;
   width: 90%;
+}
+.container-droup{
+  width: 500px;
+}
+.upload-documents{
+  width: 500px;
+  padding-left: 300px;
 }

@@ -54,6 +54,7 @@ const Inbox = ({emails}) => {
       });
 
       const data = await res.json();
+      console.log(data)
       if (data) {
         setResponseMessage('✅ Email sent successfully!');
       } else {
@@ -104,7 +105,7 @@ const Inbox = ({emails}) => {
               onClick={() => showEmailDetail(email)}
             >
               <div className="email-item-header">
-                <span className="email-from rubikRegular">{removeAngleBracketsContent(email.from)}</span>
+                 <span className="email-from rubikRegular">{removeAngleBracketsContent(email.from)}</span> 
 
                 <span className="email-date">{email.date}</span>
               </div>

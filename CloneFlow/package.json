@@ -14,8 +14,11 @@
     "bootstrap-icons": "^1.11.3",
     "dompurify": "^3.2.5",
     "libmime": "^5.3.6",
+    "lucide-react": "^0.515.0",
     "react": "^19.0.0",
+    "react-calendar": "^6.0.0",
     "react-dom": "^19.0.0",
+    "react-router-dom": "^7.6.2",
     "tailwindcss": "^4.1.6"
   },
   "devDependencies": {

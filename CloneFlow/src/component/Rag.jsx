@@ -4,7 +4,7 @@ import GiveContext from "./GiveContext.jsx"
 import './Rag.css'; // Import the CSS file
 import './Card.css'
 import './test.css'
-
+import './Compose.css'
 
 
 
@@ -131,31 +131,39 @@ const fetchUserSettings = async () => {
     <div className="userDetail modal-overlay" >
       <div className="userDetailCard" onClick={handleUserDetailVisible}>
         <div className="user-card">
-          <h2 className="user-name"><strong>Name:</strong> <input type="text" placeholder={formData} name='name'  onChange={handleChangeForm} /></h2>
-          <p className="user-info"><strong>Email:</strong> <input name='email' type="email" placeholder={formData}  onChange={handleChangeForm} /></p>
-          <p className="user-info"><strong>Phone:</strong><input type="text" name='phone' placeholder={formData}  onChange={handleChangeForm}/></p>
-          <p className="user-info"><strong>Address:</strong><input type="text" name='address' placeholder={formData} onChange={handleChangeForm} /></p>
-        </div>
-        {userDetailVisible}
-      </div>
-       <div className="button-group">
+          <h2>User Information</h2>
+          <h2 className="user-name"><input type="text"  name='name' placeholder='Name' className='aoT border-bottom' onChange={handleChangeForm} /></h2>
+          <p className="user-info"> <input name='email' type="email" placeholder='Email' className='aoT border-bottom'  onChange={handleChangeForm} /></p>
+          <p className="user-info"><input type="text" name='phone' placeholder='Phone' className='aoT border-bottom'  onChange={handleChangeForm}/></p>
+          <p className="user-info"><input type="text" name='address' placeholder='Address' className='aoT border-bottom'  onChange={handleChangeForm} /></p>
+           <div className="button-group">
               <button onClick={()=>handleSaveForm()} className="save-button">Save</button>
               <button onClick={()=>setActive('close')} className="cancel-button">Close</button>
             </div>
+        </div>
+        {userDetailVisible}
+        
+      </div>
+       {/* <div className="button-group">
+              <button onClick={()=>handleSaveForm()} className="save-button">Save</button>
+              <button onClick={()=>setActive('close')} className="cancel-button">Close</button>
+            </div> */}
     </div>
   )
 
   const uploadDocuments = (
-    <div className="container-droup modal-overlay">
-      <h1>Upload Multiple Files</h1>
+    <div className="container-droup modal-overlay upload-documents" style={{ paddingLeft: "400px",paddingTop: "100px" }}>
+      {/* <h1>Upload Multiple Files</h1> */}
       <div
+
         id="drop-area"
         ref={dropAreaRef}
-        className={highlight ? "highlight" : ""}
+        className={(highlight ? "highlight" : "") + " upload-documents"}
         onClick={handleClick}
         style={{
           border: "2px dashed #007bff",
           padding: "20px",
+          paddingLeft: "50px",
           textAlign: "center",
           fontFamily: "Arial, sans-serif",
           margin: "20px",
@@ -167,33 +175,43 @@ const fetchUserSettings = async () => {
         <input
           type="file"
           multiple
+          className='upload-documents'
           ref={fileInputRef}
           onChange={handleFileChange}
           style={{ display: "none" }}
         />
       </div>
-      <button id="uploadButton" onClick={handleUpload}>
+      {/* <button id="uploadButton" onClick={handleUpload} className='cancel-button'>
         Upload
-      </button>
+      </button> */}
       <ul id="file-list">
         {files.map((file, index) => (
           <li key={index}>{file.name}</li>
         ))}
       </ul>
-       <div className="button-group">
-              <button onClick={()=>setActive('close')} className="cancel-button">Close</button>
+      <div className="button-group"style={{display:'flex', justifyContent:'space-between'}}  >
+
+          <button   onClick={handleUpload} className='cancel-button'  style={{padding:'10px', marginLeft:'20px', marginBottom:'20px'}}>
+        Upload
+      </button>
+       <div className="button-group"style={{paddingRight:'420px', marginBottom:'20px'}}>
+              <button onClick={()=>setActive('close')} className="cancel-button" >Close</button>
             </div>
+      </div>
+       {/* <div className="button-group"style={{paddingRight:'420px', marginBottom:'20px'}}>
+              <button onClick={()=>setActive('close')} className="cancel-button" >Close</button>
+            </div> */}
     </div>
   )
 
   const contact = (
 
-    <div className="contacts modal-overlay">
-      <h1>Contacts</h1>
+    <div className="contacts modal-overlay upload-documents" style={{ paddingLeft: "400px",paddingTop: "100px" }}>
+      {/* <h1>Contacts</h1> */}
       <div
         id="drop-area"
         ref={dropAreaRef}
-        className={highlight ? "highlight" : ""}
+        className={(highlight ? "highlight" : "") + " upload-documents"}
         onClick={handleClick}
         style={{
           border: "2px dashed #007bff",
@@ -214,17 +232,27 @@ const fetchUserSettings = async () => {
           style={{ display: "none" }}
         />
       </div>
-      <button id="uploadButton" onClick={handleUploadContact}>
+      {/* <button id="uploadButton" onClick={handleUploadContact}>
+        Upload
+      </button> */}
+            <div className="button-group"style={{display:'flex', justifyContent:'space-between'}}  >
+
+          <button   onClick={handleUploadContact} className='cancel-button'  style={{padding:'10px', marginLeft:'20px', marginBottom:'20px'}}>
         Upload
       </button>
+       <div className="button-group"style={{paddingRight:'420px', marginBottom:'20px'}}>
+              <button onClick={()=>setActive('close')} className="cancel-button" >Close</button>
+            </div>
+      </div>
+      
       <ul id="file-list">
         {files.map((file, index) => (
           <li key={index}>{file.name}</li>
         ))}
       </ul>
-       <div className="button-group">
+       {/* <div className="button-group">
               <button onClick={()=>setActive('close')} className="cancel-button">Close</button>
-            </div>
+            </div> */}
     </div>
   )
   const instruction = (

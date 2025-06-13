@@ -47,15 +47,15 @@ function App() {
   };
 
   return (
-    <div className="superContainer">
+    <div className="superContainer" >
        <BackgroundEmailFetcher onFetch={setEmails} /> {/* run in background */}
       <Header  toggleSidebar={toggleSidebar}/>
     
-  <div className="container">
+  <div className="container" style={{backgroundColor:'#f8fafd'}}>
 
   <div className={`${sidebarOpen ? 'sidebar' : 'sidebar-close'}`}>
-    <div className="composeContainer ">
-  <button className='rubikSemiBold' onClick={() => setActive('compose')}>
+    <div className="composeContainer">
+  <button className='rubikSemiBold  btn btn-primary' onClick={() => setActive('compose')}>
     <img src={composeIcon} alt="Compose Icon" className="sidebar-icon" />
     <div className='rubikSemiBold'>Compose</div>
   </button>
@@ -86,7 +86,7 @@ function App() {
 
 </div>
 
-     <div className="content">
+     <div className="content" style={{backgroundColor:'white'}}>
        {renderComponent()}
      </div>
    </div>

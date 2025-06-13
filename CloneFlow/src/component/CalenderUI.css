@@ -1,0 +1,478 @@
+/* App.css */
+
+/* General Body and Container Styling */
+
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-items: flex-end;
+  align-items: flex-start;
+  /* padding: 1rem; */
+}
+
+.app-title {
+  font-size: 2.25rem; /* text-4xl */
+  font-weight: bold;
+  color: #1d4ed8; /* blue-700 */
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+/* Error Message Styling */
+.error-message {
+  background-color: #fee2e2; /* red-100 */
+  border: 1px solid #ef4444; /* red-400 */
+  color: #b91c1c; /* red-700 */
+  padding: 0.75rem 1rem; /* px-4 py-3 */
+  border-radius: 0.25rem; /* rounded */
+  position: relative;
+  margin-bottom: 1rem; /* mb-4 */
+  width: 100%;
+  max-width: 32rem; /* max-w-md */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06); /* shadow-md */
+}
+
+.error-message strong {
+  font-weight: bold;
+}
+
+.error-message .close-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0.75rem 1rem; /* px-4 py-3 */
+  cursor: pointer;
+}
+
+.error-message .close-button svg {
+  fill: currentColor;
+  height: 1.5rem; /* h-6 */
+  width: 1.5rem; /* w-6 */
+  color: #ef4444; /* red-500 */
+}
+
+/* Auth Form Container */
+.auth-form-container {
+  width: 100%;
+  max-width: 32rem; /* max-w-md */
+  background-color: #ffffff; /* bg-white */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md */
+  margin-bottom: 2rem; /* mb-8 */
+}
+
+.auth-form-title {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 1rem; /* mb-4 */
+  color: #2563eb; /* blue-600 */
+}
+
+.auth-form {
+  margin-top: 1rem; /* space-y-4 */
+}
+
+.auth-form div {
+  margin-bottom: 1rem; /* for spacing between form groups */
+}
+
+.auth-form label {
+  display: block;
+  color: #374151; /* gray-700 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.auth-form input[type="text"],
+.auth-form input[type="password"] {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow */
+  appearance: none;
+  border: 1px solid #d1d5db; /* border */
+  border-radius: 0.25rem; /* rounded */
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  color: #374151; /* text-gray-700 */
+  line-height: 1.25; /* leading-tight */
+  outline: none; /* focus:outline-none */
+}
+
+.auth-form input[type="text"]:focus,
+.auth-form input[type="password"]:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:shadow-outline - adjusted for no outline */
+}
+
+.auth-form button {
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.25rem; /* rounded */
+  outline: none; /* focus:outline-none */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* focus:shadow-outline - adjusted for no outline */
+  width: 100%;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.auth-form button.login-btn {
+  background-color: #3b82f6; /* blue-500 */
+  color: white;
+}
+
+.auth-form button.login-btn:hover {
+  background-color: #2563eb; /* blue-700 */
+}
+
+.auth-form button.register-btn {
+  background-color: #22c55e; /* green-500 */
+  color: white;
+}
+
+.auth-form button.register-btn:hover {
+  background-color: #16a34a; /* green-700 */
+}
+
+/* Authenticated Layout */
+.authenticated-layout {
+  width: 100%;
+  max-width: 64rem; /* max-w-4xl */
+  /* background-color: #ffffff; bg-white */
+  /* padding: 1.5rem;  */
+  border-radius: 0.5rem; /* rounded-lg */
+  /* box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); shadow-md */
+}
+
+.welcome-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem; /* mb-4 */
+}
+
+.welcome-header h2 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  color: #2563eb; /* blue-600 */
+}
+
+.welcome-header button {
+  background-color: #ef4444; /* red-500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.25rem; /* rounded */
+  outline: none; /* focus:outline-none */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* focus:shadow-outline */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.welcome-header button:hover {
+  background-color: #dc2626; /* red-700 */
+}
+
+/* Grid Layout for Calendar and Events */
+.calendar-events-grid {
+  display: grid;
+  gap: 2rem; /* gap-8 */
+}
+
+@media (min-width: 768px) { /* md:grid-cols-2 */
+  .calendar-events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.calendar-section {
+  /* md:col-span-1 */
+}
+
+.calendar-section .react-calendar {
+  margin-left: auto; /* mx-auto */
+  margin-right: auto; /* mx-auto */
+}
+
+.events-section {
+  padding-top: 100px;
+  /* md:col-span-1 */
+}
+
+.events-section h3 {
+  font-size: 1.25rem; /* text-xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 0.75rem; /* mb-3 */
+  color: #1f2937; /* gray-800 */
+}
+
+.events-section .add-event-button {
+  margin-bottom: 1rem; /* mb-4 */
+  background-color: #3b82f6; /* blue-500 */
+  color: white;
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.375rem; /* rounded-md */
+  outline: none; /* focus:outline-none */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* focus:shadow-outline */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.events-section .add-event-button:hover {
+  background-color: #2563eb; /* blue-700 */
+}
+
+.events-section p.no-events {
+  color: #4b5563; /* gray-600 */
+}
+
+.events-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 0.75rem; /* space-y-3 */
+}
+
+.events-list li {
+  background-color: #f9fafb; /* gray-50 */
+  padding: 1rem; /* p-4 */
+  border-radius: 0.375rem; /* rounded-md */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow-sm */
+  border: 1px solid #e5e7eb; /* border border-gray-200 */
+}
+
+.events-list li .event-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.events-list li .event-item-header h4 {
+  font-size: 1.125rem; /* text-lg */
+  font-weight: bold;
+  color: #111827; /* gray-900 */
+}
+
+.events-list li .event-item-header p.event-time {
+  font-size: 0.875rem; /* text-sm */
+  color: #4b5563; /* gray-600 */
+}
+
+.events-list li .event-actions {
+  display: flex;
+  gap: 0.5rem; /* space-x-2 */
+}
+
+.events-list li .event-actions button {
+  background-color: #e6e6e600; /* yellow-500 */
+  color: white;
+  padding: 0.25rem 0.75rem; /* px-3 py-1 */
+  border-radius: 0.25rem; /* rounded */
+  font-size: 0.875rem; /* text-sm */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.events-list li .event-actions button:hover {
+  background-color: #d9770600; /* yellow-600 */
+}
+
+.events-list li .event-actions button.delete-btn {
+ background-color: #e2baba00; 
+}
+.edit-btn ,.delete-btn{
+  height: 20px;
+}
+
+.events-list li .event-actions button.delete-btn:hover {
+  background-color: #83838300; /* red-600 */
+}
+
+.events-list li .event-description {
+  color: #374151; /* gray-700 */
+  font-size: 0.875rem; /* text-sm */
+}
+
+/* Event Modal Styling */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  background-color: rgba(75, 85, 99, 0.5); /* gray-600 with opacity */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem; /* p-4 */
+}
+
+.modal-content {
+  background-color: #ffffff; /* bg-white */
+  padding: 1.5rem; /* p-6 */
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-xl */
+  width: 100%;
+  max-width: 32rem; /* max-w-md */
+  height: 500px;
+}
+
+.modal-content h3 {
+  font-size: 1.5rem; /* text-2xl */
+  font-weight: 600; /* font-semibold */
+  margin-bottom: 1rem; /* mb-4 */
+  color: #2563eb; /* blue-600 */
+}
+
+.modal-form div {
+  margin-bottom: 1rem; /* space-y-4 */
+}
+
+.modal-form label {
+  display: block;
+  color: #374151; /* gray-700 */
+  font-size: 0.875rem; /* text-sm */
+  font-weight: bold;
+  margin-bottom: 0.5rem; /* mb-2 */
+}
+
+.modal-form input[type="text"],
+.modal-form input[type="time"],
+.modal-form textarea {
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* shadow */
+  appearance: none;
+  border: 1px solid #d1d5db; /* border */
+  border-radius: 0.25rem; /* rounded */
+  width: 100%;
+  padding: 0.5rem 0.75rem; /* py-2 px-3 */
+  color: #374151; /* text-gray-700 */
+  line-height: 1.25; /* leading-tight */
+  outline: none; /* focus:outline-none */
+}
+
+.modal-form input:focus,
+.modal-form textarea:focus {
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5); /* focus:shadow-outline */
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem; /* space-x-3 */
+  margin-top: 1rem; /* mt-6 */
+  
+}
+
+.modal-actions button {
+  font-weight: bold;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.25rem; /* rounded */
+  outline: none; /* focus:outline-none */
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05); /* focus:shadow-outline */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.modal-actions button.cancel-btn {
+  background-color: #d1d5db; /* gray-300 */
+  color: #374151; /* gray-800 */
+}
+
+.modal-actions button.cancel-btn:hover {
+  background-color: #9ca3af; /* gray-400 */
+}
+
+.modal-actions button.save-btn {
+  background-color: #3b82f6; /* blue-500 */
+  color: white;
+}
+
+.modal-actions button.save-btn:hover {
+  background-color: #2563eb; /* blue-700 */
+}
+
+/* react-calendar overrides (from previous index.css) */
+.react-calendar {
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0; /* Tailwind gray-200 */
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); /* Tailwind shadow-md */
+  font-family: 'Inter', sans-serif;
+}
+
+.react-calendar__tile {
+  padding: 0.5rem;
+  text-align: center;
+  height: 70px; /* Adjust height as needed */
+  position: relative;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #ef4444; /* Tailwind red-500 */
+}
+
+.react-calendar__tile--now {
+  background: #bfdbfe !important; /* Tailwind blue-200 */
+  color: #1e40af !important; /* Tailwind blue-800 */
+}
+
+.react-calendar__tile--active {
+  background: #2563eb !important; /* Tailwind blue-600 */
+  color: white !important;
+}
+
+.react-calendar__tile--hasActive {
+    background: #93c5fd !important; /* Tailwind blue-300 */
+}
+
+.react-calendar__navigation button {
+  min-width: 44px;
+  background: none;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  padding: 0.5rem;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: #f0f0f0;
+}
+
+.event-dot {
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: #ef4444; /* red-500 */
+    border-radius: 50%;
+    display: block;
+}
+/* New styling for event title on tile */
+.event-tile-title {
+    font-size: 0.7rem; /* Smaller font for tile */
+    color: #4a5568; /* gray-700 */
+    margin-top: 2px;
+    font-weight: 500;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    text-overflow: ellipsis; /* Add ellipsis */
+    width: 90%; /* Take up most of the tile width */
+    margin-left: auto;
+    margin-right: auto;
+}
+.content{
+  padding: 0px;
+}
+.border-bottom{
+   border: 1px solid #eceff1;
+   border-top: 0;
+   border-left: 0;
+    border-right: 0;
+}
